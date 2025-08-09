@@ -1,59 +1,55 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Enkel Chat (GitHub Pages + Firebase)</title>
+  <meta charset="UTF-8" />
+  <title>Chat App</title>
   <style>
-    body { font-family: system-ui, Arial; margin: 0; padding: 12px; }
-    #main { display:flex; gap:12px; }
-    #left { width:280px; }
-    #chat { flex:1; border-left:1px solid #ddd; padding-left:12px; }
-    .user, .friend { padding:8px; border:1px solid #eee; margin-bottom:6px; cursor:pointer; }
-    .message { margin:6px 0; }
-    .me { font-weight:700; }
-    #messages { height:60vh; overflow:auto; border:1px solid #eee; padding:8px; }
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 1rem; }
+    #friendsList .friend { cursor: pointer; padding: 5px; border: 1px solid #ccc; margin: 3px 0; }
+    #messages { border: 1px solid #ccc; height: 200px; overflow-y: auto; margin-bottom: 10px; padding: 5px; }
+    .message .me { font-weight: bold; color: green; }
+    #composer { display: none; margin-top: 10px; }
   </style>
 </head>
 <body>
-  <h2>Enkel Chat — inget lösenord</h2>
-  <div id="status">Laddar…</div>
 
-  <div id="main">
-    <div id="left">
-      <div>
-        <label>Din användarnamn:</label><br/>
-        <input id="usernameInput" placeholder="Välj användarnamn" />
-        <button id="saveName">Spara</button>
-      </div>
+<h2>Chat App</h2>
+<div id="status">Laddar...</div>
 
-      <hr/>
+<div>
+  <label>Användarnamn:</label><br />
+  <input type="text" id="usernameInput" placeholder="Skriv användarnamn" />
+  <button id="saveName">Spara användarnamn</button>
+</div>
 
-      <div>
-        <label>Sök användare (användarnamn):</label><br/>
-        <input id="searchInput" placeholder="Skriv ett användarnamn" />
-        <button id="searchBtn">Sök / Lägg till</button>
-      </div>
+<hr />
 
-      <h4>Vänner</h4>
-      <div id="friendsList"></div>
-    </div>
+<div>
+  <label>Sök användare:</label><br />
+  <input type="text" id="searchInput" placeholder="Ange användarnamn" />
+  <button id="searchBtn">Lägg till vän</button>
+</div>
 
-    <div id="chat">
-      <h3 id="chatWith">Ingen chatt vald</h3>
-      <div id="messages"></div>
-      <div id="composer" style="display:none; margin-top:8px;">
-        <input id="messageInput" placeholder="Skriv meddelande..." style="width:80%" />
-        <button id="sendBtn">Skicka</button>
-      </div>
-    </div>
-  </div>
+<h3>Vänner:</h3>
+<div id="friendsList"></div>
 
-  <!-- Firebase CDN (compat för enkel användning) -->
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+<hr />
 
-  <script src="app.js"></script>
+<h3 id="chatWith"></h3>
+<div id="messages"></div>
+
+<div id="composer">
+  <input type="text" id="messageInput" placeholder="Skriv meddelande" />
+  <button id="sendBtn">Skicka</button>
+</div>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<!-- Din appkod -->
+<script src="app.js"></script>
+
 </body>
 </html>
